@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "singularName": "course",
+    "pluralName": "courses",
+    "displayName": "Course"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "total_modules": {
+      "type": "integer",
+      "required": true
+    },
+    "imageUrl": {
+      "type": "string",
+      "required": true
+    },
+    "Modules": {
+      "type": "component",
+      "component": "component.module",
+      "repeatable": true
+    }
+  }
+}

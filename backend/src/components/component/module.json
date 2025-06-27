@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_component_modules",
+  "info": {
+    "displayName": "Module",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "details": {
+      "type": "text",
+      "required": true
+    },
+    "numberOfClasses": {
+      "type": "integer",
+      "required": true
+    },
+    "topicsCovered": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

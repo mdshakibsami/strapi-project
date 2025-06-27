@@ -11,11 +11,14 @@ export const AuthProvider = ({ children }) => {
   // fetching user from strapi
   const fetchUser = async (token) => {
     try {
-      const result = await fetch("http://localhost:1337/api/users/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const result = await fetch(
+        "http://127.0.0.1:1337/api/users/me?populate=role",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!result.ok) throw new Error("Invalid token");
 
       const userData = await result.json();
@@ -42,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   // register
   const signIn = async (username, email, password) => {
-    const res = await fetch("http://localhost:1337/api/auth/local/register", {
+    const res = await fetch("http://127.0.0.1:1337/api/auth/local/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   // login
   const logIn = async (identifier, password) => {
-    const res = await fetch("http://localhost:1337/api/auth/local", {
+    const res = await fetch("http://127.0.0.1:1337/api/auth/local", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ identifier, password }),

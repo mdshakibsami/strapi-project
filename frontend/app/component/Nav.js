@@ -40,17 +40,31 @@ const Nav = () => {
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/courses">Courses</Link>
+        <Link href="/courses">All Courses</Link>
       </li>
       <li>
         <Link href="/about">About Us</Link>
       </li>
+      {user && (user.role?.name === "Student" || user.isAdmin) ? (
+        <>
+          <li>
+            <Link href="/myCourses">My Courses</Link>
+          </li>
+        </>
+      ) : null}
+      {user && (user.role?.name === "SocialMediaManager" || user.isAdmin) ? (
+        <>
+          <li>
+            <Link href="/dashboard">Dashboard</Link>
+          </li>
+        </>
+      ) : null}
     </>
   );
 
   return (
-    <div>
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="">
+      <div className="navbar px-5 bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -13,7 +13,7 @@ const ForgetPassword = () => {
     console.log(email);
 
     const result = await fetch(
-      "http://localhost:1337/api/auth/forgot-password",
+      "http://127.0.0.1:1337/api/auth/forgot-password",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
