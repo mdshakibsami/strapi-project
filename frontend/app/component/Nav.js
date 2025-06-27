@@ -46,7 +46,7 @@ const Nav = () => {
             </ul>
           </div>
           <Link href="/" className="btn btn-ghost  ">
-            CPS Academy
+            SPK Academy
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
