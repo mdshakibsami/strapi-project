@@ -5,6 +5,7 @@ import signUpImage from "@/public/login.svg";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
+import Link from "next/link";
 
 const Login = () => {
   const router = useRouter();
@@ -76,7 +77,9 @@ const Login = () => {
                   placeholder="Password"
                 />
                 <div>
-                  <a className="link link-hover">Forgot password?</a>
+                  <Link href="login/forgetPassword" className="link link-hover">
+                    Forgot password?
+                  </Link>
                 </div>
                 <button className="btn btn-neutral mt-4">Login</button>
               </form>
