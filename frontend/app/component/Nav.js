@@ -42,16 +42,7 @@ const Nav = () => {
       <li>
         <Link href="/courses">All Courses</Link>
       </li>
-      <li>
-        <Link href="/about">About Us</Link>
-      </li>
-      {user && (user.role?.name === "Student" || user.isAdmin) ? (
-        <>
-          <li>
-            <Link href="/myCourses">My Courses</Link>
-          </li>
-        </>
-      ) : null}
+
       {user && (user.role?.name === "SocialMediaManager" || user.isAdmin) ? (
         <>
           <li>
@@ -59,6 +50,10 @@ const Nav = () => {
           </li>
         </>
       ) : null}
+
+      <li>
+        <Link href="/about">About Us</Link>
+      </li>
     </>
   );
 
