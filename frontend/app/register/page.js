@@ -4,71 +4,53 @@ import React, { useState } from "react";
 import signUpImage from "@/public/signup.svg";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
-  const [errorMessage, setErrorMessage] = useState("");
+  const { signIn } = useAuth();
   const router = useRouter();
   const handleRegister = async (e) => {
     e.preventDefault();
     const username = e.target.username.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(username, email, password);
-    setErrorMessage("");
-    try {
-      const result = await fetch(
-        "http://localhost:1337/api/auth/local/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, email, password }),
-        }
-      );
+    // console.log(username, email, password);
 
-      const data = await result.json();
-      if (!result.ok) {
-        throw new Error(data.error?.message || "Registration failed");
-      }
-
-      // Success alert
+    const result = await signIn(username, email, password);
+    // console.log(result);
+    if (result.success) {
       await Swal.fire({
         title: "Success!",
         text: "Registered successfully!",
         icon: "success",
         confirmButtonText: "Continue",
         customClass: {
-          popup: 'bg-base-100 border border-base-300 rounded-lg shadow-2xl',
-          title: 'text-success text-2xl font-bold',
-          htmlContainer: 'text-base-content',
-          confirmButton: 'bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800'
+          popup: "bg-base-100 border border-base-300 rounded-lg shadow-2xl",
+          title: "text-success text-2xl font-bold",
+          htmlContainer: "text-base-content",
+          confirmButton:
+            "bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800",
         },
-        buttonsStyling: false
+        buttonsStyling: false,
       });
-
-      console.log("User data:", data);
-      router.push("/login");
-
-      localStorage.setItem("token", data.jwt); // Store token
-    } catch (error) {
+      // console.log("User data:", data);
+      router.push("/");
+    } else {
       // Error alert
       await Swal.fire({
         title: "Registration Failed!",
-        text: error.message,
+        text: result.message || "Registration failed. Please try again.",
         icon: "error",
         confirmButtonText: "Try Again",
         customClass: {
-          popup: 'bg-base-100 border border-error rounded-lg shadow-2xl',
-          title: 'text-error text-2xl font-bold',
-          htmlContainer: 'text-base-content',
-          confirmButton: 'bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800'
+          popup: "bg-base-100 border border-error rounded-lg shadow-2xl",
+          title: "text-error text-2xl font-bold",
+          htmlContainer: "text-base-content",
+          confirmButton:
+            "bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800",
         },
-        buttonsStyling: false
+        buttonsStyling: false,
       });
-
-      setErrorMessage(error.message);
-      console.log("Register Error", error);
     }
   };
   return (

@@ -1,7 +1,39 @@
+"use client";
 import Link from "next/link";
 import React from "react";
+import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Nav = () => {
+  const { logOut, user } = useAuth();
+
+  // logout function
+  const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to logout?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Logout",
+      cancelButtonText: "Cancel",
+      customClass: {
+        popup: "bg-base-100 border border-base-300 rounded-lg shadow-2xl",
+        title: "text-base-content text-2xl font-bold",
+        htmlContainer: "text-base-content",
+        confirmButton:
+          "bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 mr-2",
+        cancelButton:
+          "bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400",
+      },
+      buttonsStyling: false,
+    });
+
+    if (result.isConfirmed) {
+      logOut();
+    }
+  };
+
+  // links of navbar
   const links = (
     <>
       <li>
@@ -53,12 +85,20 @@ const Nav = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end space-x-3">
-          <Link className="btn " href="/login">
-            Login
-          </Link>
-          <Link className="btn bg-black text-white" href="/register">
-            Register
-          </Link>
+          {user ? (
+            <button onClick={handleLogout} className="btn bg-black text-white">
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link className="btn " href="/login">
+                Login
+              </Link>
+              <Link className="btn bg-black text-white" href="/register">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
