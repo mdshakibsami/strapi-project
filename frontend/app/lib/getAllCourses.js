@@ -3,6 +3,5 @@ export default async function getAllCourses() {
   if (!result.ok) {
     throw new Error("There was an error fetching courses");
   }
-
   return result.json();
 }

@@ -43,7 +43,8 @@ const Nav = () => {
         <Link href="/courses">All Courses</Link>
       </li>
 
-      {user && (user.role?.name === "SocialMediaManager" || user.isAdmin) ? (
+      {user &&
+      (user.role === "SocialMediaManager" || user.role?.name === "Admin") ? (
         <>
           <li>
             <Link href="/dashboard">Dashboard</Link>

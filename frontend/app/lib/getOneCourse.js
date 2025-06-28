@@ -1,21 +1,13 @@
 export default async function getOneCourse(id) {
-  // Get token from localStorage (if available)
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
-
-  const headers = {
-    "Content-Type": "application/json",
-  };
-
-  // Add Authorization header if token exists
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
+  const token = localStorage.getItem("token");
 
   const result = await fetch(
     `http://localhost:1337/api/courses/${id}?populate=*`,
     {
-      headers,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       cache: "no-store", // Ensures fresh data on each request
     }
   );

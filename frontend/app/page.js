@@ -56,7 +56,6 @@ export default async function Home() {
                   <p className="text-base-content/70 text-sm mb-4 line-clamp-3">
                     {course.description}
                   </p>
-
                   {/* Course Info */}
                   <div className="flex justify-between items-center mb-4 text-sm">
                     <span className="badge badge-neutral badge-sm">
@@ -66,16 +65,15 @@ export default async function Home() {
                       ${course.price}
                     </span>
                   </div>
-
-                  {/* Action Button
+                  Action Button
                   <div className="card-actions justify-end">
                     <Link
-                      href={`/courses/${course.id}`}
+                      href={`/courses/${course.documentId}`}
                       className="btn btn-neutral btn-sm w-full hover:bg-black transition-colors duration-200"
                     >
                       View Details
                     </Link>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             ))}

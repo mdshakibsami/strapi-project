@@ -382,9 +382,10 @@ const SingleCourse = ({ params }) => {
                         )}
                       </div>
 
-                      {user?.role?.name === "Student" ||
-                      "admin" ||
-                      "SocialMediaManager" ? (
+                      {(user && (
+                        (typeof user.role === 'string' && (user.role === "Student" || user.role === "admin" || user.role === "SocialMediaManager")) ||
+                        (user.role?.name === "Student" || user.role?.name === "admin" || user.role?.name === "SocialMediaManager")
+                      )) ? (
                         // Watch button for Students and Admins
                         <button
                           className="btn btn-sm btn-outline btn-success"
