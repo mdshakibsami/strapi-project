@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import story from "@/public/story.jpg";
 
 const About = () => {
   return (
@@ -36,7 +37,7 @@ const About = () => {
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/covertest.jpg"
+                src={story}
                 alt="Our learning environment"
                 fill
                 className="object-cover"

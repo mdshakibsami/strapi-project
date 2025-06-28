@@ -6,3 +6,72 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* SweetAlert2 Dark Theme Styles */
+.swal2-dark-popup {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151 !important;
+  border-radius: 0.5rem !important;
+  color: #f9fafb !important;
+}
+
+.swal2-dark-title {
+  color: #f9fafb !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+}
+
+.swal2-dark-content {
+  color: #d1d5db !important;
+  font-size: 0.875rem !important;
+}
+
+.swal2-dark-input {
+  background-color: #374151 !important;
+  border: 1px solid #4b5563 !important;
+  border-radius: 0.375rem !important;
+  color: #f9fafb !important;
+  padding: 0.5rem !important;
+}
+
+.swal2-dark-confirm-btn {
+  background-color: #10b981 !important;
+  color: white !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.375rem !important;
+  border: none !important;
+}
+
+.swal2-dark-cancel-btn {
+  background-color: #6b7280 !important;
+  color: white !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.375rem !important;
+  border: none !important;
+}
+
+.swal2-dark-actions {
+  gap: 0.5rem !important;
+}
+
+/* Ensure select dropdown is visible */
+.swal2-select {
+  background-color: #374151 !important;
+  border: 1px solid #4b5563 !important;
+  border-radius: 0.375rem !important;
+  color: #f9fafb !important;
+  padding: 0.5rem !important;
+}
+
+.swal2-select option {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+/* Validation message styling */
+.swal2-validation-message {
+  background-color: #ef4444 !important;
+  color: white !important;
+}

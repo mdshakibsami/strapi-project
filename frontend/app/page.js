@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-// import bannerImage from "@/public/cpsCover.jpg";
-import bannerImage from "@/public/covertest.jpg";
+import bannerImage from "@/public/cpsCover.jpg";
+// import bannerImage from "@/public/covertest.jpg";
 import getBestCourses from "./lib/getBestCourse";
 
 export default async function Home() {

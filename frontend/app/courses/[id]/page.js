@@ -239,7 +239,11 @@ const SingleCourse = ({ params }) => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 1.5M7 13l1.5 1.5M13 13v6a2 2 0 11-4 0v-6m4 0V9a2 2 0 10-4 0v4.01"
                   />
                 </svg>
-                Enroll Now
+                {user?.role?.name === "Admin" ||
+                user?.role?.name === "SocialMediaManager" ||
+                user?.role?.name === "Student"
+                  ? "Enrolled"
+                  : "Enroll Now"}
               </button>
             </div>
           </div>
@@ -382,14 +386,14 @@ const SingleCourse = ({ params }) => {
                         )}
                       </div>
 
-                      {(user && (
-                        (typeof user.role === 'string' && (user.role === "Student" || user.role === "admin" || user.role === "SocialMediaManager")) ||
-                        (user.role?.name === "Student" || user.role?.name === "admin" || user.role?.name === "SocialMediaManager")
-                      )) ? (
-                        // Watch button for Students and Admins
-                        <button
+                      {user &&
+                      (user.role?.name === "Admin" ||
+                        user.role?.name === "SocialMediaManager" ||
+                        user.role?.name === "Student") ? (
+                        // Watch button for enrolled users
+                        <Link
+                          href={`/courses/${id}/video`}
                           className="btn btn-sm btn-outline btn-success"
-                          onClick={() => console.log("video is playing")}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -411,8 +415,8 @@ const SingleCourse = ({ params }) => {
                               d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                             />
                           </svg>
-                          Watch
-                        </button>
+                          Play Video
+                        </Link>
                       ) : (
                         // Enroll to watch button for others (default)
                         <button className="btn btn-sm btn-outline btn-neutral">

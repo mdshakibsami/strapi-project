@@ -44,7 +44,7 @@ const Nav = () => {
       </li>
 
       {user &&
-      (user.role === "SocialMediaManager" || user.role?.name === "Admin") ? (
+      (user.role?.name === "SocialMediaManager" || user.role?.name === "Admin") ? (
         <>
           <li>
             <Link href="/dashboard">Dashboard</Link>
@@ -88,7 +88,7 @@ const Nav = () => {
             </ul>
           </div>
           <Link href="/" className="btn btn-ghost  ">
-            SPK Academy
+            CPS Academy
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
